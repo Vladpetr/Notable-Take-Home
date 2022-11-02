@@ -1,5 +1,6 @@
 from word2number import w2n
 
+
 class NoteTransformation:
     def __init__(self, note):
         if not note:
@@ -21,10 +22,12 @@ class NoteTransformation:
                 transformed_note += (words[idx] + " ")
 
             else:
+                if idx >= len(words) - 1:
+                    transformed_note += (words[idx])
                 # check if the next word after "number" is "next" and
                 # if the numbered list has already been started
-                if (self.cur_number and words[idx + 1].lower() != "next") or \
-                        (not self.cur_number and words[idx+1].lower() == "next"):
+                elif (self.cur_number and words[idx + 1].lower() != "next") or \
+                        (not self.cur_number and words[idx + 1].lower() == "next"):
                     transformed_note += (words[idx] + " ")
 
                 else:
@@ -68,10 +71,9 @@ class NoteTransformation:
 
 
 notable_example = "Patient presents today with several issues. Number one BMI has increased by 10% " \
-          "since their last visit number next patient reports experiencing dizziness several times " \
-          "in the last two weeks. Number next patient has a persistent cough that hasn’t " \
-          "improved for last 4 weeks Number next patient is taking drug number five several " \
-          "times a week"
+                  "since their last visit number next patient reports experiencing dizziness several times " \
+                  "in the last two weeks. Number next patient has a persistent cough that hasn’t " \
+                  "improved for last 4 weeks Number next patient is taking drug number five several " \
+                  "times a week"
 test1 = NoteTransformation(notable_example)
 print(test1.transform())
-
