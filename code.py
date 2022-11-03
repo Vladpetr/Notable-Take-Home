@@ -6,7 +6,6 @@ class NoteTransformation:
         if not note:
             self.note = input("Unfortunately we could not recognize a note. "
                               "Could you please enter it below?")
-        # self.punctuation = "...?!"
 
         self.note = note
         self.cur_number = None
